@@ -30,7 +30,7 @@ struct spi_info {
 #if CONFIG_MACH_SAM3X
 DECL_ENUMERATION("spi_bus", "spi0", 0);
 DECL_ENUMERATION_RANGE("spi_bus", "usart0", 1, 3);
-DECL_CONSTANT_STR("BUS_PINS_spi0", "PA25,PA26,PA27");
+//DECL_CONSTANT_STR("BUS_PINS_spi0", "PA25,PA26,PA27"); //COMMENT OUT SPI0 DECLARATION
 DECL_CONSTANT_STR("BUS_PINS_usart0", "PA10,PA11,PA17");
 DECL_CONSTANT_STR("BUS_PINS_usart1", "PA12,PA13,PA16");
 DECL_CONSTANT_STR("BUS_PINS_usart2", "PB21,PB20,PB24");
@@ -58,7 +58,7 @@ DECL_CONSTANT_STR("BUS_PINS_usart2", "PD15,PD16,PD17");
 static const struct spi_info spi_bus[] = {
 #if CONFIG_MACH_SAM3X
     { SPI0, ID_SPI0,
-        GPIO('A', 25), GPIO('A', 26), GPIO('A', 27), 'A', 'A', 'A'},
+        0, 0, 0, 'A', 'A', 'A' }, //DUMMY PINS
     { USART0, ID_USART0,
         GPIO('A', 10), GPIO('A', 11), GPIO('A', 17), 'A', 'A', 'B'},
     { USART1, ID_USART1,

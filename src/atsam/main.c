@@ -130,12 +130,13 @@ matrix_init(void)
     MATRIX->MATRIX_SCFG[0] = (MATRIX_SCFG_SLOT_CYCLE(64)
                               | MATRIX_SCFG_DEFMSTR_TYPE(1));
 }
-
+void init_pio_pins(void);
 // Main entry point - called from armcm_boot.c:ResetHandler()
 void
 armcm_main(void)
 {
     SystemInit();
     matrix_init();
+    init_pio_pins(); //INITIALIZE PA25, PA26, PA27 
     sched_main();
 }

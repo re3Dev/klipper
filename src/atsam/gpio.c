@@ -41,7 +41,20 @@ static const struct gpio_info digital_regs[] = {
     { PIOE, ID_PIOE },
 #endif
 };
+/****************************************************************
+ * Initialize SPI pins as PIO
+ ****************************************************************/
 
+void init_pio_pins(void) {
+    //UNUSED TEST PIN TO MAKE SURE PINS ARE BEING INITIALIZED
+    PIOA->PIO_PER = PIO_PA9; //ENABLE PIO CONTROL FOR PA9 TEST PIN
+    PIOA->PIO_OER = PIO_PA9; //SET PA9 AS OUTPUT
+    //SPI PINS TO PIO
+    PIOA->PIO_PER = PIO_PA25 | PIO_PA26 | PIO_PA27; //ENABLE PIO CONTROL
+    PIOA->PIO_OER = PIO_PA25 | PIO_PA26 | PIO_PA27; //SET AS OUTPUTS
+    PIOA->PIO_CODR = PIO_PA25 | PIO_PA27; //SET PA25 & PA27 LOW
+    PIOA->PIO_SODR = PIO_PA26; //SET PA26 HIGH
+}
 
 /****************************************************************
  * Pin multiplexing
